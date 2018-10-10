@@ -32,19 +32,12 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>com.github.jai-imageio</groupId>-->
-        <!--<artifactId>jai-imageio-core</artifactId>-->
-        <!--<version>1.4.0</version>-->
-        <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
-
-
         <dependency>
             <groupId>com.twelvemonkeys.servlet</groupId>
             <artifactId>servlet</artifactId>
             <version>3.4.1</version>
             <scope>provided</scope>
+            <!-- 此处用provided的原因是，我已手动将该库及其依赖复制到${catalina.home}/lib下面 -->
         </dependency>
 
         <dependency>
@@ -120,7 +113,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.21.0</version>
                     <configuration>
-                        <!-- 跳过测试 -->
+                        <!-- 项目部署到服务器时跳过测试 -->
                         <skipTests>true</skipTests>
                     </configuration>
                 </plugin>
