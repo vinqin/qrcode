@@ -1,0 +1,55 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>edu.stu:servlet-jsp-qr:1.0-SNAPSHOT Web Application</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>servlet-jsp-qr</param-name>
+        <param-value>servlet-jsp-qr.log</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>img_dir</param-name>
+        <param-value>/tmp/qrcode</param-value>
+    </context-param>
+
+    <listener>
+        <!--ImageIO service provider loader/unloader-->
+        <listener-class>com.twelvemonkeys.servlet.image.IIOProviderContextListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>initParameters</servlet-name>
+        <description>Init the application parameters</description>
+        <servlet-class>edu.stu.InitParameters</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>encodeServlet</servlet-name>
+        <servlet-class>edu.stu.service.EncodeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>decodeServlet</servlet-name>
+        <servlet-class>edu.stu.service.DecodeServlet</servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>encodeServlet</servlet-name>
+        <url-pattern>/encode</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>decodeServlet</servlet-name>
+        <url-pattern>/decode</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
